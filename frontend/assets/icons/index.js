@@ -45,6 +45,8 @@ import { Text } from "react-native"; // Import Text from react-native for fallba
 //   profileBold: ProfileBold, // Add ProfileBold icon to the icons object
 // };
 // const icons: Record<string, React.ComponentType<any>> = { ... };
+import About from "./About"; // Import About icon if needed
+import Bookmark from "./Bookmark"; // Import Bookmark icon
 import Explore from "./Explore";
 import ExploreBold from "./ExploreBold";
 import Fire from "./Fire"; // Import Fire icon if needed
@@ -53,12 +55,17 @@ import Group from "./Group";
 import GroupBold from "./GroupBold";
 import Home from "./Home";
 import HomeBold from "./HomeBold";
+import Logout from "./Logout"; // Import Logout icon if needed
 import Message from "./Message";
 import MessageBold from "./MessageBold";
+import Profile from "./Profile"; // Import Profile icon
+import Question from "./Question"; // Import Question icon if needed
+import Settings from "./Settings"; // Import Settings icon
 import ShoppingBag from "./ShoppingBag";
 import ShoppingBagBold from "./ShoppingBagBold";
-
+import user from "./user"; // Import User icon
 const icons = {
+  bookmark: Bookmark, // Add Bookmark icon to the icons object
   home: Home,
   homeBold: HomeBold,
   bag: ShoppingBag,
@@ -71,6 +78,12 @@ const icons = {
   groupBold: GroupBold,
   fire: Fire, // Add Fire icon to the icons object
   fireBold: FireBold, // Add FireBold icon to the icons object
+  user,
+  profile: Profile, // Add Profile icon to the icons object
+  settings: Settings, // Add Settings icon to the icons object
+  question: Question, // Add Question icon to the icons object
+  logout: Logout, // Add Logout icon to the icons object
+  info: About, // Add About icon to the icons object
 };
 
 const Icons = ({ name, ...props }) => {

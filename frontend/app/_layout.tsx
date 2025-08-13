@@ -1,5 +1,6 @@
 import { AuthProvider } from "@/context/AuthProvider";
 import { DrawerProvider } from "@/context/DrawerContext"; // 👈 Add this
+import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { useEffect } from "react";
 import "../global.css";
 
@@ -11,11 +12,15 @@ import {
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { StatusBar as RNStatusBar } from "react-native";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 export default function RootLayout() {
+  const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
+    unsavedChangesWarning: false,
+  });
   const colorScheme = useColorScheme();
   const [fontsLoaded, error] = useFonts({
     "Poppins-Black": require("../assets/fonts/Poppins-Black.ttf"),
@@ -37,22 +42,32 @@ export default function RootLayout() {
   if (!fontsLoaded && !error) return null;
 
   return (
-    <AuthProvider>
-      <DrawerProvider>
-        {" "}
-        {/* 👈 Wrap everything inside here */}
-        <ThemeProvider
-          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-        >
-          <Stack
-            screenOptions={{
-              headerShown: false,
-              animation: "fade_from_bottom",
-            }}
-          />
-          <StatusBar style="auto" />
-        </ThemeProvider>
-      </DrawerProvider>
-    </AuthProvider>
+    <ConvexProvider client={convex}>
+      <AuthProvider>
+        <DrawerProvider>
+          {" "}
+          {/* 👈 Wrap everything inside here */}
+          <ThemeProvider
+            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+          >
+            <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+            <RNStatusBar
+              barStyle={
+                colorScheme === "dark" ? "light-content" : "dark-content"
+              }
+              backgroundColor={colorScheme === "dark" ? "#000" : "#fff"} // match your app background
+              translucent={false}
+            />
+            <Stack
+              screenOptions={{
+                headerShown: false,
+                animation: "fade_from_bottom",
+              }}
+            />
+            {/* <StatusBar style="auto" /> */}
+          </ThemeProvider>
+        </DrawerProvider>
+      </AuthProvider>
+    </ConvexProvider>
   );
 }

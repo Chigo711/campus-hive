@@ -1,12 +1,14 @@
 import Svg, { Path } from "react-native-svg";
 
-const FireBold = () => {
+const FireBold = ({ size }) => {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="currentColor"
       class="size-6"
+      height={size}
+      width={size}
     >
       <Path
         fill-rule="evenodd"

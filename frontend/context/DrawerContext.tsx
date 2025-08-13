@@ -51,7 +51,7 @@ import {
   withTiming,
 } from "react-native-reanimated";
 
-const DRAWER_WIDTH = wp(75);
+const DRAWER_WIDTH = wp(65);
 
 const DrawerContext = createContext(null);
 

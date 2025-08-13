@@ -12,13 +12,10 @@ import Animated from "react-native-reanimated";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const { mainTranslateX } = useDrawer();
+  const { animatedStyle } = useDrawer(); // ✅ use animatedStyle from context
 
   return (
-    <Animated.View
-      style={{ flex: 1, transform: [{ translateX: mainTranslateX }] }}
-    >
-      {" "}
+    <Animated.View style={[{ flex: 1 }, animatedStyle]}>
       <Tabs
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
@@ -38,21 +35,19 @@ export default function TabLayout() {
           name="home"
           options={{
             title: "Home",
-            tabBarIcon: ({ focused, color }) =>
+            tabBarIcon: ({ focused }) =>
               focused ? (
                 <Icons name="homeBold" color="#333" />
               ) : (
                 <Icons name="home" />
               ),
-            // <IconSymbol size={28} name="house.fill" color={color} />,
           }}
         />
 
         <Tabs.Screen
           name="market"
           options={{
-            // title: 'Market',
-            tabBarIcon: ({ color, focused }) =>
+            tabBarIcon: ({ focused }) =>
               focused ? (
                 <Icons name="bagBold" color="#333" />
               ) : (
@@ -60,25 +55,23 @@ export default function TabLayout() {
               ),
           }}
         />
+
         <Tabs.Screen
           name="explore"
           options={{
-            // title: 'Explore',
-            tabBarIcon: ({ focused, color }) =>
+            tabBarIcon: ({ focused }) =>
               focused ? (
                 <Icons name="exploreBold" color="#333" />
               ) : (
                 <Icons name="explore" />
               ),
-            // <IconSymbol size={28} name="paperplane.fill" color={color} />,
           }}
         />
 
         <Tabs.Screen
           name="groups"
           options={{
-            // title: 'Groups',
-            tabBarIcon: ({ color, focused }) =>
+            tabBarIcon: ({ focused }) =>
               focused ? (
                 <Icons name="groupBold" color="#333" />
               ) : (
@@ -86,17 +79,16 @@ export default function TabLayout() {
               ),
           }}
         />
+
         <Tabs.Screen
           name="message"
           options={{
-            // title: 'Message',
-            tabBarIcon: ({ color, focused }) =>
+            tabBarIcon: ({ focused }) =>
               focused ? (
                 <Icons name="messageBold" color="#333" />
               ) : (
                 <Icons name="message" color="#333" />
               ),
-            // <Icons name={focused? 'message' : 'messageBold'} color="#333" />,
           }}
         />
       </Tabs>

@@ -3,6 +3,8 @@ import SideDrawer from "@/components/SideDrawer";
 import { hp, wp } from "@/helpers/common";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import {
   Image,
   TouchableOpacity,
@@ -20,6 +22,7 @@ function Home() {
   const DRAWER_WIDTH = wp(75);
   const drawerProgress = useSharedValue(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const tasks = useQuery(api.tasks.get);
 
   const openDrawer = () => {
     setDrawerOpen(true);

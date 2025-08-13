@@ -1,6 +1,6 @@
 import Svg, { Path } from "react-native-svg";
 
-const Fire = () => {
+const Fire = ({ color, size }) => {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9,6 +9,8 @@ const Fire = () => {
       stroke-width="1.5"
       stroke="currentColor"
       class="size-6"
+      height={size}
+      width={size}
     >
       <Path
         stroke-linecap="round"
