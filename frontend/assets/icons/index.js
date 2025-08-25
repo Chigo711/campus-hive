@@ -64,6 +64,11 @@ import Settings from "./Settings"; // Import Settings icon
 import ShoppingBag from "./ShoppingBag";
 import ShoppingBagBold from "./ShoppingBagBold";
 import user from "./user"; // Import User icon
+import Envelope from "./Envelope"; // Import Envelope icon if needed
+import Padlock from "./Padlock"; // Import Padlock icon if needed
+import Eye from "./Eye"; // Import Eye icon if needed
+import ArrowLeft from "./ArrowLeft"; // Import ArrowLeft icon if needed
+import EyeSlash from "./EyeSlash"; // Import EyeSlash icon if needed
 const icons = {
   bookmark: Bookmark, // Add Bookmark icon to the icons object
   home: Home,
@@ -84,9 +89,14 @@ const icons = {
   question: Question, // Add Question icon to the icons object
   logout: Logout, // Add Logout icon to the icons object
   info: About, // Add About icon to the icons object
+  envelope: Envelope, // Add Envelope icon to the icons object
+  padlock: Padlock, // Add Padlock icon to the icons object
+  eye: Eye, // Add Eye icon to the icons object
+  eyeSlash: EyeSlash, // Add EyeSlash icon to the icons object
+  arrowLeft: ArrowLeft, // Add ArrowLeft icon to the icons object
 };
 
-const Icons = ({ name, ...props }) => {
+const Icons = ({ name, className, ...props }) => {
   //   const IconsComponent = icons[name];
   const FallbackIcon = () => <Text style={{ fontSize: 12 }}>❓</Text>; // or a placeholder SVG
   const IconsComponent = icons[name] || FallbackIcon;
@@ -94,9 +104,10 @@ const Icons = ({ name, ...props }) => {
   return (
     <IconsComponent
       height={props.size || 24}
-      weight={props.size || 24}
+      width={props.size || 24}
       strokeWidth={props.strokeWidth || 1}
       color={props.color}
+      className={className}
       {...props}
     />
   );

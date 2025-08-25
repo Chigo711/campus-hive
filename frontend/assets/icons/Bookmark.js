@@ -6,7 +6,7 @@ function Bookmark({ color, size }) {
       fill="none"
       viewBox="0 0 24 24"
       stroke-width="1.5"
-      stroke="currentColor"
+      stroke={color}
       className="size-6"
       height={size}
       width={size}

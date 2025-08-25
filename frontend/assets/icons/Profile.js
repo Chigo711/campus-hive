@@ -1,13 +1,13 @@
 import Svg, { Path } from "react-native-svg";
 
-const Profile = ({ size }) => {
+const Profile = ({ color, size }) => {
   return (
     <Svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       stroke-width="1.5"
-      stroke="currentColor"
+      stroke={color}
       class="size-6"
       height={size}
       width={size}

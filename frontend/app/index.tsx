@@ -18,9 +18,9 @@ const App = () => {
   const router = useRouter();
   return (
     <ScreenWrapper>
-      <StatusBar
+      {/* <StatusBar
         barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
-      />
+      /> */}
 
       <Stack.Screen
         options={{
@@ -55,13 +55,16 @@ const App = () => {
           <Button
             className="justify-center items-center  bg-buttonColor w-full"
             title="Get Started"
-            onPress={() => router.push("/(tabs)/home")} //This should routing to Sign up, we have home there for now till the authentication is done.
+            onPress={() => {
+              router.push("/(auth)/sign-up");
+            }} //This should routing to Sign up, we have home there for now till the authentication is done.
             buttonStyle={{
               marginHorizontal: wp(3),
               height: hp(6.6),
               borderCurve: "continuous",
               borderRadius: 18,
               width: wp(80),
+              marginBottom: hp(6),
             }}
             textStyle={{
               fontSize: hp(2.3),
@@ -69,26 +72,7 @@ const App = () => {
             }}
             fontFamily="pmedium"
           />
-
-          <View className="flex-row justify-center items-center gap-2">
-            <Text
-              className="text-center font-psemibold"
-              style={{ fontSize: hp(1.6) }}
-            >
-              Already have and account?
-            </Text>
-            <Pressable onPress={() => router.push("/(auth)/signIn")}>
-              <Text
-                className="font-psemibold text-primary"
-                style={{ fontSize: hp(1.6) }}
-              >
-                Login
-              </Text>
-            </Pressable>
-          </View>
         </View>
-        {/*    THE ADD CONTENT BUTTON WILL GO HERE, RIGHT AT THE BOTTOM OF THE SCREEN */}
-        {/*    <Button></Button>*/}
       </View>
     </ScreenWrapper>
   );

@@ -9,6 +9,7 @@ const Button = ({
   buttonStyle,
   textStyle,
   fontFamily,
+  width,
 }) => {
   if (loading) {
     return (
@@ -21,7 +22,7 @@ const Button = ({
   return (
     <Pressable
       className={className}
-      title={title}
+      // title={title}
       style={buttonStyle}
       onPress={onPress}
       disabled={loading}
